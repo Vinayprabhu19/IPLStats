@@ -42,8 +42,9 @@ public class PlayerService {
 		int wicketsCount = info.getWickets()!=null?info.getWickets():0;
 		int inningsCount = info.getInnings()!=null?info.getInnings():0;
 		int ballsCount = info.getBalls()!=null?info.getBalls():0;
-		float averageBowling = inningsCount>0?(float) wicketsCount / inningsCount:0;
-		float strike_rate=ballsCount>0?(float) wicketsCount* 100 / ballsCount:0;
+		int runsConceded = info.getRunsConceded()!=null?info.getRunsConceded():0;
+		float averageBowling = wicketsCount>0?(float) runsConceded / wicketsCount :0;
+		float strike_rate=wicketsCount>0?(float) ballsCount /wicketsCount :0;
 		playerBowlingInfo.put("wickets", wicketsCount);
 		playerBowlingInfo.put("balls", ballsCount);
 		playerBowlingInfo.put("innings", inningsCount);
@@ -111,7 +112,10 @@ public class PlayerService {
 		wickets.put("value", info.getWickets());
 		JSONObject balls=new JSONObject();
 		balls.put("key", "Balls");
-		balls.put("value", info.getBalls());
+		balls.put("value", ballsCount);
+		JSONObject runsConcededObj=new JSONObject();
+		runsConcededObj.put("key", "Runs Conceded");
+		runsConcededObj.put("value", runsConceded);
 		JSONObject average=new JSONObject();
 		average.put("key", "Average");
 		average.put("value", round(averageBowling, 2));
@@ -121,6 +125,7 @@ public class PlayerService {
 		stats.put(innings);
 		stats.put(wickets);
 		stats.put(balls);
+		stats.put(runsConcededObj);
 		stats.put(average);
 		stats.put(strikeRate);
 		playerBowlingInfo.put("stats", stats);

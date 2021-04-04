@@ -10,4 +10,6 @@ public interface BattingInfo {
 	public Integer getDismissalCount();
 	
 	public Integer getRunType();
+	
+	public String getPlayer();
 }

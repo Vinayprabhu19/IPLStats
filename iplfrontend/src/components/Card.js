@@ -11,7 +11,8 @@ class CardLayout extends Component {
         mainInfo:props.mainInfo,
         backsideInfo:props.backsideInfo,
         isFlipped: false,
-        color:props.color
+        color:props.color,
+        turnBack:props.turnBack
     };
     
   }
@@ -23,7 +24,7 @@ class CardLayout extends Component {
   render() {
 
     return (
-    <Paper elevation={8} className="card" onClick={()=>this.setState({isFlipped:!this.state.isFlipped})}>
+    <Paper elevation={8} className="card" onClick={()=>this.setState({isFlipped:!this.state.isFlipped & this.state.turnBack})}>
       <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
         <div>
           <h3 className="cardTitle" style={{color:this.state.color}}>{this.state.title}</h3>

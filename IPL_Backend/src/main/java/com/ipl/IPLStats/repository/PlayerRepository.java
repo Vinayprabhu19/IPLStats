@@ -41,7 +41,7 @@ public interface PlayerRepository extends CrudRepository<Player, Integer> {
 			+ "order by sum(s.batsman_runs) desc")
 	public List<StadiumInfo> getStadiumRuns(String playerName);
 	
-	@Query("select sum(is_wicket) as wickets,count(distinct match_id) as innings ,count(*) as balls from scores "
+	@Query("select sum(is_wicket) as wickets,count(distinct match_id) as innings , count(bowler) as balls , sum(batsman_runs) as runsConceded from scores "
 			+ "where dismissal_kind!='runout' and bowler=?1")
 	public BowlingInfo getBowlingInfo(String playerName);
 	

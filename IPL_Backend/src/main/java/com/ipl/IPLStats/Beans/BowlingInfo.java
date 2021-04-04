@@ -15,4 +15,8 @@ public interface BowlingInfo {
 	public String getDismissalKind();
 	
 	public Integer getDismissalCount();
+	
+	public Integer getRunsConceded();
+	
+
 }

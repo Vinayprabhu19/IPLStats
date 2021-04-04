@@ -41,16 +41,14 @@ CREATE TABLE MATCH(
  );
  
  CREATE TABLE PLAYER(
-	id SERIAL  PRIMARY KEY,
-	player_name VARCHAR
+	player_name VARCHAR PRIMARY KEY,
+	team_name VARCHAR
 	);
 	
 CREATE TABLE TEAM(
-  id SERIAL PRIMARY KEY,
-  team_name VARCHAR
+  team_name VARCHAR PRIMARY KEY
   );
   
 CREATE TABLE GROUND(
- id SERIAL PRIMARY KEY,
- ground_name VARCHAR
+ ground_name VARCHAR PRIMARY KEY
  );
